@@ -1,6 +1,12 @@
+import '../Styles/CreateTaskButton.css'
+
 function CreateTaskButton(){
     return (
-        <button>+</button>
+        <button className='CreateTaskButton' 
+            onClick={(event)=> {
+                console.log('Le diste click')
+            }}
+        >+</button>
     );
 }
 

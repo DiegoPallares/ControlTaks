@@ -1,9 +1,18 @@
-function TaskItem({ text, completed}){
+import '../Styles/TaskItem.css'
+function TaskItem(props){
     return(
-      <li>
-        <spam>V</spam>
-        <p>{text}</p>
-        <sapm>X</sapm>
+      <li className="TaskItem">
+        {/*props.completed && "Icon-check--active" es un ternario, si es tru activa la clase y si no queda false, le da el color verde en la V*/}
+        <span 
+          className={`Icon Icon-check ${props.completed && "Icon-check--active"}`}
+          onClick={props.onComplete}
+        >V</span>
+        <p 
+        className={`TaskItem-p ${props.completed? "TaskItem-p--complete" : '' }`}>{props.text}</p>
+        <span 
+          className="Icon Icon-delete"
+          onClick={props.onDelete}
+        >X</span>
       </li>
     )
   }
