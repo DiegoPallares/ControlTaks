@@ -1,18 +1,20 @@
+import {CompleteIcon} from '../componentes/CompleteIcon'
+import {DeleteIcon} from '../componentes/DeleteIcon'
 import '../Styles/TaskItem.css'
 function TaskItem(props){
     return(
       <li className="TaskItem">
-        {/*props.completed && "Icon-check--active" es un ternario, si es tru activa la clase y si no queda false, le da el color verde en la V*/}
-        <span 
-          className={`Icon Icon-check ${props.completed && "Icon-check--active"}`}
-          onClick={props.onComplete}
-        >V</span>
+        <CompleteIcon
+          //complete lo traemos desde App.js, es la variable si esta completa la tareas. y se envia para tener los colores
+          completed={props.completed}
+          onComplete={props.onComplete}
+        />
         <p 
-        className={`TaskItem-p ${props.completed? "TaskItem-p--complete" : '' }`}>{props.text}</p>
-        <span 
-          className="Icon Icon-delete"
-          onClick={props.onDelete}
-        >X</span>
+          className={`TaskItem-p ${props.completed? "TaskItem-p--complete" : '' }`}>{props.text}
+        </p>
+        <DeleteIcon
+          onDelete={props.onDelete}
+        />
       </li>
     )
   }
