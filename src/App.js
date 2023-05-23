@@ -16,26 +16,63 @@ import React from 'react';
 //   {text: 'sexta tarea', completed: true}
 // ];
 
-function App() {
- // Se crea la  constante asignando el locaslstorage con nombre
-  const localStorageTasks = localStorage.getItem('Tasks_V1')
+function useLocalStorage (itemName, initialValueStorage) {
 
-  let parsedTasks;
+  const [item , setItem] = React.useState(initialValueStorage);
+  const [loading , setloading] = React.useState(true);
+  const [error , seterror] = React.useState(false);
+
+  React.useEffect( () => {
+    setTimeout(() =>{
+      try {
+        // Se crea la  constante asignando el locaslstorage con variable de nombre
+        const localStorageItem = localStorage.getItem(itemName)
+    
+        let parsedItem;
+    
+          if(!localStorageItem){
+            //Guardamos en localStorage con la variable itemName y convertimos a Json Stringify de forma vacio,
+            //Para que ya tenga el tipo de datos necesario y no se rompa.
+            localStorage.setItem(itemName, JSON.stringify(initialValueStorage))
+            //Asignadmo a una array vacio
+            parsedItem = initialValueStorage
+          }else{
+            //Si tiene tareas creada el local storage de tareas la convertimos a json que podra leer
+            //en nuestro estado  de useState tasks.
+            parsedItem = JSON.parse(localStorageItem)
+            setItem(parsedItem)
+          }
+    
+          setloading(false)
+      } catch (error) {
+        setloading(false)
+        seterror(true)
+      }
+    }, 2000)
+  })
   
-  if(!localStorageTasks){
-    //Guardamos en localStorage con el nombre de Tasks_V1 un Json Stringify de forma vacio,
-    //Para que ta tenga el tipo de datos necesario y no se rompa.
-    localStorage.setItem('Tasks_V1', JSON.stringify([]))
-    //Asignadmo a una array vacio
-    parsedTasks = []
-  }else{
-    //Si tiene tareas creada el local storage de tareas la convertimos a json que podra leer
-    //en nuestro estado  de useState tasks.
-    parsedTasks = JSON.parse(localStorageTasks)
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem))
+    setItem(newItem)
   }
 
+  return {
+    item, 
+    saveItem, 
+    loading, 
+    error
+  }
+}
+
+function App() {
+ 
   //Estado que contrala la cantidad de tareas y tareas completadas
-  const [tasks, setTasks] = React.useState(parsedTasks)
+  const {
+    item: tasks,
+    saveItem: saveTasks,
+    loading,
+    error
+   } = useLocalStorage('Tasks_V1', [])
   //Estado que contrala lo que se escribe en el buscador
   const [searchValue, setSearchValue] = React.useState('')
 
@@ -52,16 +89,13 @@ function App() {
   const completedTask =  tasks.filter(task => task.completed).length
   const totalTask = tasks.length
 
-  const saveTasks = (newTasks) => {
-    localStorage.setItem('Tasks_V1', JSON.stringify(newTasks))
-    setTasks(newTasks)
-  }
+
 
   const completeTask = (text) => {
     //Crea una copia del estado del array de Tareas.
     const newTasks =  [...tasks]
     const index = newTasks.findIndex(
-      (task) => task.text == text
+      (task) => task.text === text
     )
     newTasks[index].completed = true
     saveTasks(newTasks)
@@ -71,13 +105,13 @@ function App() {
     //Crea una copia del estado del array de Tareas.
     const newTasks =  [...tasks]
     const index = newTasks.findIndex(
-      (task) => task.text == text
+      (task) => task.text === text
     )
     newTasks.splice(index,1)
     saveTasks(newTasks)
   }
 
-  console.log('desde app.js ' + searchValue)
+  //console.log('desde app.js ' + searchValue)
 
   return (
     <React.Fragment>
@@ -88,6 +122,10 @@ function App() {
       />
 
       <TaskList>
+        {loading && <p>Estamos Cargando...</p>}
+        {error && <p>Hubo un error</p>}
+        {/* {(!loading && searchValue.length === 0)&& <p>Crea tu primera tarea</p>} */}
+
         {searchedTaks.map( task =>(
           <TaskItem  
             key={task.text} 
