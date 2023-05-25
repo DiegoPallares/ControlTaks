@@ -3,9 +3,10 @@ import { TaskSearch} from './componentes/TaskSearch.js';
 import { TaskList } from './componentes/TaskList.js';
 import { TaskItem } from './componentes/TaskItem.js';
 import { CreateTaskButton } from './componentes/CreateTaskButton.js';
-import './App.css';
+import { Modal } from './componentes/Modal.js'
+import { TaskForm } from './componentes/TaskForm.js'
 import React from 'react';
-
+import './App.css';
 
 // const defaultTask = [
 //   {text: 'Primera tarea', completed: true},
@@ -15,6 +16,7 @@ import React from 'react';
 //   {text: 'Quinta tarea', completed: false},
 //   {text: 'sexta tarea', completed: true}
 // ];
+// localStorage.setItem('Tasks_V1' , JSON.stringify(defaultTask))
 
 function useLocalStorage (itemName, initialValueStorage) {
 
@@ -75,6 +77,8 @@ function App() {
    } = useLocalStorage('Tasks_V1', [])
   //Estado que contrala lo que se escribe en el buscador
   const [searchValue, setSearchValue] = React.useState('')
+  //Estado apra el Modal
+  const [openModal, setOpenModal] = React.useState(false)
 
   const searchedTaks = tasks.filter(
     (task) =>{
@@ -97,7 +101,13 @@ function App() {
     const index = newTasks.findIndex(
       (task) => task.text === text
     )
-    newTasks[index].completed = true
+
+    if(newTasks[index].completed === true){
+      newTasks[index].completed = false
+    }else{
+      newTasks[index].completed = true
+    }
+    
     saveTasks(newTasks)
   }
 
@@ -138,7 +148,15 @@ function App() {
         ))}
       </TaskList>
 
-      <CreateTaskButton />
+      <CreateTaskButton setOpenModal ={setOpenModal} openModal={openModal}/>
+
+      {openModal && (
+        <Modal>
+          <TaskForm setOpenModal ={setOpenModal}/>
+        </Modal>  
+      )}
+      
+      
     </React.Fragment>
   );
 }
