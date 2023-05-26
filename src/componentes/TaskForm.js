@@ -1,7 +1,7 @@
 import React from "react";
 import '../Styles/TaskForm.css'
 
-function TaskForm ({setOpenModal}) {
+function TaskForm ({setOpenModal, onCreate, setInput}) {
 
     const [newTaskValue, setNewTaskValue] = React.useState('')
 
@@ -9,6 +9,8 @@ function TaskForm ({setOpenModal}) {
         //Con este preventDefault evitamos que automaticamente los boton recarguen la pagina
         event.preventDefault()
         console.log('Boton Add: ' + newTaskValue)
+        setInput={newTaskValue}
+        onCreate(newTaskValue)
         setOpenModal(false)
     }
     

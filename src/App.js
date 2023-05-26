@@ -80,6 +80,10 @@ function App() {
   //Estado apra el Modal
   const [openModal, setOpenModal] = React.useState(false)
 
+  const [input, setInput] = React.useState('')
+
+
+
   const searchedTaks = tasks.filter(
     (task) =>{
       //Con el toLowerCase pasamoe todo a minusculas y asi el buscador no es afectado de como este escrito
@@ -93,7 +97,9 @@ function App() {
   const completedTask =  tasks.filter(task => task.completed).length
   const totalTask = tasks.length
 
-  const addTask = (text) => {
+  const addTask = (input) => {
+    console.log("Entre a add Task")
+    const text = "tarea de prueba3"
     //Crea una copia del estado del array de Tareas.
     const newTasks =  [...tasks]
     newTasks.push({
@@ -160,7 +166,12 @@ function App() {
 
       {openModal && (
         <Modal>
-          <TaskForm setOpenModal ={setOpenModal}/>
+          <TaskForm 
+            setOpenModal ={setOpenModal}
+            setInput={setInput}
+            onCreate={ () => addTask()}
+            //onCreate={addTask}
+          />
         </Modal>  
       )}
       
