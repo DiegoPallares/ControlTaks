@@ -93,7 +93,15 @@ function App() {
   const completedTask =  tasks.filter(task => task.completed).length
   const totalTask = tasks.length
 
-
+  const addTask = (text) => {
+    //Crea una copia del estado del array de Tareas.
+    const newTasks =  [...tasks]
+    newTasks.push({
+      text: text,
+      completed: false,
+    })
+    saveTasks(newTasks)
+  }
 
   const completeTask = (text) => {
     //Crea una copia del estado del array de Tareas.

@@ -18,5 +18,4 @@ function TaskItem(props){
       </li>
     )
   }
-
   export {TaskItem}
