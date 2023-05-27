@@ -1,26 +1,27 @@
 import React from "react";
 import '../Styles/TaskForm.css'
 
-function TaskForm ({setOpenModal, onCreate, setInput}) {
-
-    const [newTaskValue, setNewTaskValue] = React.useState('')
+function TaskForm ({setOpenModal, Dato, SetDato, onCreate}) {
 
     const onSubmit = (event) => {
+        console.log('Dato Boton Add: ' + Dato)
+        console.log('SetDato: ' + SetDato)
         //Con este preventDefault evitamos que automaticamente los boton recarguen la pagina
         event.preventDefault()
-        console.log('Boton Add: ' + newTaskValue)
-        setInput={newTaskValue}
-        onCreate(newTaskValue)
+        //Esnecesario apra que retorne  y ejecute la funcion de onCreate en App.js
+        onCreate(Dato)
         setOpenModal(false)
+        
     }
     
     const onCancel = () => {
         console.log('Boton Cancelar')
         setOpenModal(false)
     }
-
+    //Actualiza el estado cada vez que se oprime el text Area.
     const onChange = (event) => {
-        setNewTaskValue(event.target.value)
+        SetDato(event.target.value)
+        console.log("el valor de SetDato es: " + SetDato)
     }
     
     return(
@@ -30,7 +31,6 @@ function TaskForm ({setOpenModal, onCreate, setInput}) {
             <label>Nueva Tarea</label>
             <textarea
                 placeholder="Ir de compras"
-                value={newTaskValue}
                 onChange={onChange}
             ></textarea>
             <div className="TaskForm-buttonContainer">

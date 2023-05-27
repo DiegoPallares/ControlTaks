@@ -97,13 +97,11 @@ function App() {
   const completedTask =  tasks.filter(task => task.completed).length
   const totalTask = tasks.length
 
-  const addTask = (input) => {
-    console.log("Entre a add Task")
-    const text = "tarea de prueba3"
+  const addTask = (textInput) => {
     //Crea una copia del estado del array de Tareas.
     const newTasks =  [...tasks]
     newTasks.push({
-      text: text,
+      text: textInput,
       completed: false,
     })
     saveTasks(newTasks)
@@ -167,9 +165,13 @@ function App() {
       {openModal && (
         <Modal>
           <TaskForm 
-            setOpenModal ={setOpenModal}
-            setInput={setInput}
-            onCreate={ () => addTask()}
+            setOpenModal={setOpenModal}
+            // input={input}
+            // onCreate={ () => addTask(setInput)}
+            onCreate={ () => addTask(input)}
+            SetDato={setInput}
+            Dato={input}
+            
             //onCreate={addTask}
           />
         </Modal>  
