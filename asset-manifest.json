@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/controlTaks/static/css/main.72d6735d.css",
+    "main.js": "/controlTaks/static/js/main.f0da6294.js",
+    "index.html": "/controlTaks/index.html",
+    "static/media/Delete.svg": "/controlTaks/static/media/Delete.67697f56fd2f149bc9515a879062ad5c.svg",
+    "static/media/Check.svg": "/controlTaks/static/media/Check.23109d14544b9bb9b3d5d4e65ea13701.svg",
+    "main.72d6735d.css.map": "/controlTaks/static/css/main.72d6735d.css.map",
+    "main.f0da6294.js.map": "/controlTaks/static/js/main.f0da6294.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.72d6735d.css",
+    "static/js/main.f0da6294.js"
+  ]
+}
