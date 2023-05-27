@@ -4,7 +4,7 @@ import '../Styles/TaskSearch.css'
 function TaskSearch({searchValue, setSearchValue}){
   return (
       <input 
-        placeholder="Jugar Baloncesto" 
+        placeholder="busca tus tareas" 
         className="TaskSearch" 
         value={searchValue}
         
