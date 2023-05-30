@@ -1,7 +1,8 @@
 form{
     width: 90%;
     max-width: 300px;
-    background-color: #F9E0BB;
+    /* background-color: #F9E0BB; */
+    background-color: #B8DFF0;
     padding: 30px 40px;
     /* Pone los item una al lado del otro */
     display: flex;
@@ -19,8 +20,10 @@ label{
 }
 
 textarea{
-    background-color: #C38154;
-    border: 2px solid #884A39;
+    /* background-color: #C38154;
+    border: 2px solid #884A39; */
+    background-color: #7971EA;
+    border: 2px solid #1A2C5B;
     border-radius: 2px;
     box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.25);
     color: #1E1E1F;
@@ -63,11 +66,14 @@ textarea:focus{
 }
 
 .TaskForm-button--add{
-    background: #C38154;
-    box-shadow: 0px 5px 10px #884A39;    
+    /* background: #C38154;
+    box-shadow: 0px 5px 10px #884A39;     */
+    background: #3E4E88;
+    box-shadow: 0px 5px 10px #7971EA;    
 }
 
 .TaskForm-button--cancel{
-    background: #eecc99;
+    /* background: #eecc99; */
+    background: #a7d6eb;
 }
 

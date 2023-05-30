@@ -1,8 +1,9 @@
 .TaskSearch{
-    /* background: #84E85B; */
-    background: #C38154;
+    /* background: #C38154; 
+    border: 2px solid #884A39;*/
+    background: #3E4E88;
+    border: 2px solid #1A2C5B;
     border-radius: 2px;
-    border: 2px solid #884A39;
     margin: 0 10%;
     height: 64px;
     width: calc(80%);
@@ -10,16 +11,16 @@
     text-align: center;
     font-family: 'Montserrat';
     font-weight: 400;
-    color: #0c0c0c;
+    color: #B8DFF0;
     box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.25);
 }
 
 .TaskSearch::placeholder{
-    color: #070707;
+    color: #B8DFF0;
     font-family: 'Montserrat';
     font-weight: 400;
 }
 
 .TaskSearch:focus{
-    outline-color: #F9E0BB;
+    outline-color: #7971EA;
 }

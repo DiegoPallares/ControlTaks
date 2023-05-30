@@ -1,6 +1,8 @@
 .TaskItem{
-    background-color: #FFC26F;
-    border: 2px solid #884A39;
+    /* background-color: #FFC26F;
+    border: 2px solid #884A39; */
+    background-color: #ABA9E9;
+    border: 2px solid #1A2C5B;
     position: relative;
     display: flex;
     margin: 0 10%;

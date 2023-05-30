@@ -1,6 +1,8 @@
 .CreateTaskButton{
-    background-color: #884A39;
-    box-shadow: 0px 5px 15px #884A39;
+    /* background-color: #884A39;
+    box-shadow: 0px 5px 15px #884A39; */
+    background-color: #3E4E88;
+    box-shadow: 0px 5px 15px #3E4E88;
     border: none;
     border-radius: 50%;
     font-size: 50px;
