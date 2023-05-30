@@ -8,12 +8,15 @@
     width: 48px;
     font-size: 24px;
     font-weight: bold;
-    /*background-color: #CCC*/
+    fill: blue;
 }
+
+
 
 .Icon-container-check{
     position: absolute;
     left: 12px;
+    
 }
 
 .Icon-container-check--active{
@@ -34,7 +37,6 @@
     height: 24px;
     
 }
-
 .Icon-container-check:hover .Icon-svg{
     fill: green;
 }
